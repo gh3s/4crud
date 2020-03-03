@@ -1,10 +1,10 @@
 {
   "name": "4crud",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Fast nodejs module for API development",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha",
+    "test": "mocha",
     "start": "node index.js"
   },
   "repository": {
