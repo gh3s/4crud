@@ -6,13 +6,13 @@ class Crud {
     return this
   }
 
-  put (fnc) {
-    this.PUT = fnc
+  post (fnc) {
+    this.POST = fnc
     return this
   }
 
-  post (fnc) {
-    this.POST = fnc
+  put (fnc) {
+    this.PUT = fnc
     return this
   }
 
@@ -27,16 +27,14 @@ class Crud {
         let body = ''
         // eslint-disable-next-line no-return-assign
         req.on('data', chunk => body += chunk)
-        req.on('end', () => {
+        req.on('end', async () => {
           try {
-            if (body !== '') {
-              req.body = JSON.parse(body)
-              this[req.method](req, res) // this[method](req, res) executes fnc(req,res)
-            } else this.GET(req, res)
+            if (body !== '')
+              req.body = JSON.parse(body) // TODO: Implement another acceptable methods than JSON
+            this[req.method](req, res)    // this[method](req, res) executes fnc(req,res)
           } catch (e) {
-            res.statusCode = 404
-            res.setHeader('Content-Type', 'text/plain')
-            res.end('Invalid Request!')
+            req.search = 'invalid search'
+            return e
           }
         })
       })
