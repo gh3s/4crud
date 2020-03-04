@@ -31,7 +31,9 @@ class Crud {
           try {
             if (body !== '')
               req.body = JSON.parse(body) // TODO: Implement another acceptable methods than JSON
-            this[req.method](req, res)    // this[method](req, res) executes fnc(req,res)
+            const myUrl = new URL(req.url, `http://${req.headers.host}`)
+            req.search = myUrl.searchParams
+            this[req.method](req, res)    // **this[method](req, res) executes fnc(req,res)
           } catch (e) {
             req.search = 'invalid search'
             return e
