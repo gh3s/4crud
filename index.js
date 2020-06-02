@@ -1,23 +1,27 @@
 const http = require('http')
 
 class Crud {
-  get (fnc) {
+  get (url, fnc) {
     this.GET = fnc
+    this.url = url
     return this
   }
 
-  post (fnc) {
+  post (url, fnc) {
     this.POST = fnc
+    this.url = url
     return this
   }
 
-  put (fnc) {
+  put (url, fnc) {
     this.PUT = fnc
+    this.url = url
     return this
   }
 
-  delete (fnc) {
+  delete (url, fnc) {
     this.DELETE = fnc
+    this.url = url
     return this
   }
 
@@ -29,11 +33,12 @@ class Crud {
         req.on('data', chunk => body += chunk)
         req.on('end', async () => {
           try {
-            if (body !== '')
-              req.body = JSON.parse(body) // TODO: Implement another acceptable methods than JSON
-            const myUrl = new URL(req.url, `http://${req.headers.host}`)
-            req.search = myUrl.searchParams
-            this[req.method](req, res)    // **this[method](req, res) executes fnc(req,res)
+            if (body !== '') { req.body = JSON.parse(body) } // TODO: Implement another acceptable methods than JSON
+            const urlParams = new URL(req.url, `http://${req.headers.host}`)
+            req.search = urlParams.searchParams
+            if (this.url === req.url) { // route filtering (if filter is equal to url, proceed)
+              this[req.method](req, res)
+            } else { res.end('invalid route') }
           } catch (e) {
             req.search = 'invalid search'
             return e
