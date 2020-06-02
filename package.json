@@ -1,6 +1,6 @@
 {
   "name": "4crud",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fast nodejs module for API development",
   "main": "index.js",
   "scripts": {
