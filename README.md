@@ -30,35 +30,49 @@ npm test
 ### A server example
 
 ```sh
-const { Crud } = require('4crud')
-const server = new Crud()
+const Server = require('4crud')
+const server = new Server()
 
 server
-  .get((req, res) => {
-    console.log(`method: ${req.method}`)
+  // curl localhost:3000/getroute1?name=john
+  .get('/getroute1', (req, res) => {
+    console.log(`method: ${req.method} on route 1 with name: ${req.search.get('name')}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.url))
   })
-  .put((req, res) => {
+  .get('/getroute2', (req, res) => {
+    console.log(`method: ${req.method} on route 2`)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(req.url))
+  })
+  .put('/putroute1', (req, res) => {
     console.log(`method: ${req.method}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .post((req, res) => {
+  // curl -X POST -H "Content-Type: application/json" -d '{"name":"john","password":"abc"}' localhost:3000/postroute1
+  .post('/postroute1', (req, res) => {
+    console.log(`method: ${req.method} on POST route 1 with name ${req.body.name}`)
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(req.body))
+  })
+  .post('/postroute2', (req, res) => {
     console.log(`method: ${req.method}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .delete((req, res) => {
-    console.log(`method: ${req.method}`)
+  .delete('/deleteroute1?name=john01', (req, res) => {
+    console.log(`method: ${req.method} on route 1`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .start(3000) //start server at port 3000
+  .start(3000) // start server at port 3000
 
 ```
 
@@ -71,7 +85,9 @@ npm start
 ## Release History
 
 * 0.0.1
-    * CHANGE: Work in progress
+  * CHANGE: Work in progress
+* 0.1.0
+  * Basic routing implemented
 
 ## Authors
 
