@@ -83,17 +83,17 @@ server
 
 ```
 
-## Benchmarks
+## Express.js comparison
 
 Run on your preferred CLI on /test folder with server on:
 ```sh
 wrk -t8 -c100 -d30s http://localhost:3000/getroute1
 ```
 
-|  Framework |  Requests/second | Size(MB) |
+|  Framework |  Requests/second | Size(kB) |
 |---|---|---|
-| 4crud  | 19808.47  | 2.7 |
-| Express  |  19761.31 | 0.05 |
+| 4crud  | 19808.47  | 2700 |
+| Express  |  19761.31 | 50 |
 | | | |
 
 
