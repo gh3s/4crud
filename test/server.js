@@ -1,4 +1,4 @@
-const Server = require('4crud')
+const Server = require('../')
 const server = new Server()
 
 server
@@ -13,7 +13,7 @@ server
     console.log(`method: ${req.method} on route 2`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(req.url))
+    res.end('Hello')
   })
   .put('/putroute1', (req, res) => {
     console.log(`method: ${req.method}`)

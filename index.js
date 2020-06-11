@@ -1,6 +1,6 @@
 const http = require('http')
 
-class Crud {
+class Helper {
   fncStore (url, fnc, method) {
     this[method].url.push(url)
     this[method].fnc.push(fnc)
@@ -24,7 +24,7 @@ class Crud {
           if (npath !== -1) {
             this[req.method].fnc[npath](req, res)
           } else {
-            res.end('invalid route') //If url exists in url array, then execute relative function (fnc is an array)
+            res.end('invalid route') // If url exists in url array, then execute relative function (fnc is an array)
           }
         } catch (e) {
           req.search = 'invalid search'
@@ -35,7 +35,7 @@ class Crud {
   }
 }
 
-class Server extends Crud {
+class Server extends Helper {
   constructor (url, fnc) {
     super(url, fnc)
     this.GET = this.POST = this.PUT = this.DELETE = {

@@ -1,6 +1,6 @@
 # 4Crud
 
-> Fast nodejs module for API development
+> Fast nodejs module for API development written with ES6 features.
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/gh3s/4crud/graphs/commit-activity)
 [![HitCount](https://img.shields.io/github/issues/gh3s/4crud/total.svg)](http://hits.dwyl.io/GH3S/4CRUD)
@@ -9,7 +9,7 @@
 
 ## Getting Started
 
-Nodejs servers using 4Crud are fast, very fast!  But, due to be in beggining, is acception JSON requests for now
+A fast and VERY SMALL Node.js framework for API development written with javascript ES6 features.
 
 ### Prerequisites
 
@@ -27,7 +27,14 @@ This project uses Mocha-Chai combination in /test folder
 ```sh
 npm test
 ```
-### A server example
+
+## Features
+* Routing
+* Fast performance (Remember, ES6 have some intrinsic slowdowns but yes, it's fastest as express.js!)
+* Fast implementation on any type of API
+* Very small (just 50 KB!)
+
+## Example
 
 ```sh
 const Server = require('4crud')
@@ -75,6 +82,22 @@ server
   .start(3000) // start server at port 3000
 
 ```
+
+## Benchmarks
+
+Run on your preferred CLI on /test folder with server on:
+```sh
+wrk -t8 -c100 -d30s http://localhost:3000/getroute1
+```
+
+|  Framework |  Requests/second | Size(MB) |
+|---|---|---|
+| 4crud  | 19808.47  | 2.7 |
+| Express  |  19761.31 | 0.05 |
+| | | |
+
+
+
 
 ## Running
 
