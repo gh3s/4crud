@@ -4,7 +4,6 @@
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/gh3s/4crud/graphs/commit-activity)
 [![HitCount](https://img.shields.io/github/issues/gh3s/4crud/total.svg)](http://hits.dwyl.io/GH3S/4CRUD)
-[![HitCount](http://hits.dwyl.io/GH3S/4CRUD.svg)](http://hits.dwyl.io/GH3S/4CRUD)
 [![npm](https://img.shields.io/npm/dw/4crud)](https://www.npmjs.com/package/4crud)
 
 ## Getting Started
