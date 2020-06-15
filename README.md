@@ -1,10 +1,9 @@
 # 4Crud
 
-> Fast nodejs module for API development written with ES6 features.
+> VERY SMALL (7kb) and fast Node.js module for API development written with ES6 features.
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/gh3s/4crud/graphs/commit-activity)
 [![HitCount](https://img.shields.io/github/issues/gh3s/4crud/total.svg)](http://hits.dwyl.io/GH3S/4CRUD)
-[![HitCount](http://hits.dwyl.io/GH3S/4CRUD.svg)](http://hits.dwyl.io/GH3S/4CRUD)
 [![npm](https://img.shields.io/npm/dw/4crud)](https://www.npmjs.com/package/4crud)
 
 ## Getting Started
@@ -32,7 +31,7 @@ npm test
 * Routing
 * Fast performance (Remember, ES6 have some intrinsic slowdowns but yes, it's fastest as express.js!)
 * Fast implementation on any type of API
-* Very small (just 50 KB!)
+* Very small (just 7 KB!)
 
 ## Example
 
@@ -92,8 +91,8 @@ wrk -t8 -c100 -d30s http://localhost:3000/getroute1
 
 |  Framework |  Requests/second | Size(kB) |
 |---|---|---|
-| 4crud  | 19808.47  | 2700 |
-| Express  |  19761.31 | 50 |
+| 4crud  | 19808.47  | 200 |
+| Express  |  19761.31 | 7 |
 | | | |
 
 

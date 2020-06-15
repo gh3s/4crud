@@ -1,6 +1,6 @@
 {
   "name": "4crud",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fast nodejs module for API development",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,11 @@
     "crud",
     "http",
     "server",
-    "api"
+    "api",
+    "express",
+    "polka",
+    "fastify",
+    "http"
   ],
   "author": "gh3s",
   "license": "MIT",
