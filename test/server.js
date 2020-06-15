@@ -3,39 +3,39 @@ const server = new Server()
 
 server
   // curl localhost:3000/getroute1?name=john
-  .get('/getroute1', (req, res) => {
-    console.log(`method: ${req.method} on route 1 with name: ${req.search.get('name')}`)
+  .get('/route1', (req, res) => {
+    console.log(`GET on route 1 with name: ${req.search.get('name')}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.url))
   })
-  .get('/getroute2', (req, res) => {
-    console.log(`method: ${req.method} on route 2`)
+  .get('/route2', (req, res) => {
+    console.log('GET on route 2')
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end('Hello')
   })
-  .put('/putroute1', (req, res) => {
-    console.log(`method: ${req.method}`)
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(req.body))
-  })
   // curl -X POST -H "Content-Type: application/json" -d '{"name":"john","password":"abc"}' localhost:3000/postroute1
-  .post('/postroute1', (req, res) => {
-    console.log(`method: ${req.method} on POST route 1 with name ${req.body.name}`)
+  .post('/route1', (req, res) => {
+    console.log(`POST route 1 with name ${req.body.name}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .post('/postroute2', (req, res) => {
-    console.log(`method: ${req.method}`)
+  .post('/route2', (req, res) => {
+    console.log('POST on route 2')
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .delete('/deleteroute1?name=john01', (req, res) => {
-    console.log(`method: ${req.method} on route 1`)
+  .put('/route1', (req, res) => {
+    console.log('PUT on route 1')
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(req.body))
+  })
+  .delete('/route2', (req, res) => {
+    console.log(`DELETE on route 1 with name ${req.body.name}`)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
