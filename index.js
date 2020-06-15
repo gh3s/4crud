@@ -18,13 +18,13 @@ class Helper {
             req.body = JSON.parse(body)
           } // TODO: Implement another acceptable methods than JSON
           const urlParams = new URL(req.url, `http://${req.headers.host}`)
-          req.search = urlParams.searchParams
+          req.search = urlParams.searchParams // Inserted search method in request
           const path = urlParams.pathname
           const npath = this[req.method].url.indexOf(path)
           if (npath !== -1) {
             this[req.method].fnc[npath](req, res)
           } else {
-            res.end('invalid route') // If url exists in url array, then execute relative function (fnc is an array)
+            res.end('invalid route') // Find method URLs.  If url exists in url array, then execute relative function (fnc is an array)
           }
         } catch (e) {
           req.search = 'invalid search'
@@ -38,7 +38,22 @@ class Helper {
 class Server extends Helper {
   constructor (url, fnc) {
     super(url, fnc)
-    this.GET = this.POST = this.PUT = this.DELETE = {
+    this.GET = {
+      url: [],
+      fnc: []
+    }
+
+    this.POST = {
+      url: [],
+      fnc: []
+    }
+
+    this.PUT = {
+      url: [],
+      fnc: []
+    }
+
+    this.DELETE = {
       url: [],
       fnc: []
     }
