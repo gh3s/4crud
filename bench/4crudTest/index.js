@@ -1,4 +1,4 @@
-const Server = require('4crud')
+const Server = require('../../')
 const server = new Server()
 
 server

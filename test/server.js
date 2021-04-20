@@ -10,7 +10,7 @@ server
     res.end(JSON.stringify(req.url))
   })
   .get('/route2', (req, res) => {
-    console.log('GET on route 2')
+    //console.log('GET on route 2')
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
     res.end('Hello')
