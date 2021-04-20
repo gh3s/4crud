@@ -41,6 +41,5 @@
   },
   "directories": {
     "test": "test"
-  },
-  "dependencies": {}
+  }
 }
