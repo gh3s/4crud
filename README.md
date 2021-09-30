@@ -125,6 +125,8 @@ npm start
   * File server example added
   * Bugs fixed
   * Benchmark corrected
+* 0.1.6
+  * Vulnerability check
 
 ## Authors
 
