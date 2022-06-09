@@ -127,6 +127,8 @@ npm start
   * Benchmark corrected
 * 0.1.6
   * Vulnerability check
+* 1.0.0
+  * Vulnerability corrections and production release
 
 ## Authors
 
