@@ -117,16 +117,12 @@ npm start
 
 ## Release History
 
-* 0.0.1
-  * CHANGE: Work in progress
 * 0.1.0
   * Basic routing implemented
 * 0.1.5
   * File server example added
   * Bugs fixed
   * Benchmark corrected
-* 0.1.6
-  * Vulnerability check
 * 1.0.0
   * Vulnerability corrections and production release
 
