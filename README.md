@@ -123,7 +123,7 @@ npm start
   * File server example added
   * Bugs fixed
   * Benchmark corrected
-* 1.0.0
+* 1.0.1
   * Vulnerability corrections and production release
 
 ## Authors
