@@ -1,4 +1,15 @@
 const Server = require('../')
+const fs = require('fs')
+
+const privateKey = fs.readFileSync('../testKeys/key.pem', 'utf8')
+const certificate = fs.readFileSync('../testKeys/cert.pem', 'utf8')
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  passphrase: '12345' //if exists
+}
+
 const server = new Server()
 
 server
@@ -40,4 +51,4 @@ server
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .start(3000) // start server at port 3000
+  .start(3000, credentials) // start server at port 3000
