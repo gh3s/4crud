@@ -1,5 +1,18 @@
-const http = require('http');
+const https = require('https');
+const fs = require('fs');
 
-http.createServer((req, res) => {
-	if (req.url === '/getroute1') return res.end('Hello');
+const options = {
+  key: fs.readFileSync('../../testKeys/key.pem'),
+  cert: fs.readFileSync('../../testKeys/cert.pem'),
+  passphrase: '12345'
+};
+
+https.createServer(options, function (req, res) {
+  if (req.url === '/getRoute1' && req.method === 'GET') {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello, World!\n');
+  } else {
+    res.writeHead(404);
+    res.end();
+  }
 }).listen(3000);

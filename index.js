@@ -1,4 +1,5 @@
-const http = require('http')
+
+const https = require('https')
 
 class Helper {
   fncStore (url, fnc, method) {
@@ -6,8 +7,9 @@ class Helper {
     this[method].fnc.push(fnc)
   }
 
-  start (port) {
-    http.createServer((req, res) => {
+  start (port, credentials) {
+    console.log(`Starting server at port ${port}`)
+    https.createServer(credentials, (req, res) => {
       let body = ''
       req.on('data', chunk => {
         body += chunk

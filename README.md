@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-A fast and VERY SMALL Node.js framework for API development written with javascript ES6 features.
+A fast and VERY SMALL Node.js framework for API development using HTTPS written with javascript ES6 features.
 
 ### Prerequisites
 
@@ -37,15 +37,27 @@ curl localhost:3000/getroute1?name=john
 curl -X POST -H "Content-Type: application/json" -d '{"name":"john","password":"abc"}' localhost:3000/postroute1
 ```
 ## Features
+* HTTPS
 * Routing
 * Fast performance (Remember, ES6 have some intrinsic slowdowns but yes, it's fastest as express.js!)
 * Fast implementation on any type of API
-* Very small (just 7 KB!)
+* Very small (just 15 KB!)
 
-## Example
+## Usage
 
 ```js
-const Server = require('../')
+const Server = require('4crud')
+const fs = require('fs')
+
+const privateKey = fs.readFileSync([PRIVATEKEYPATH], 'utf8')
+const certificate = fs.readFileSync([CERTIFICATEPATH], 'utf8')
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  passphrase: [PASS] //if exists
+}
+
 const server = new Server()
 
 server
@@ -87,7 +99,7 @@ server
     res.setHeader('Content-Type', 'application/json')
     res.end(JSON.stringify(req.body))
   })
-  .start(3000) // start server at port 3000
+  .start(3000, credentials) // start server at port 3000
 
 ```
 
@@ -102,9 +114,9 @@ wrk -t8 -c100 -d30s http://localhost:3000/getroute1
 
 |  Framework |  Requests/second | Size(kB) |
 |---|---|---|
-| Express  | 9404.79  | 200 |
-| 4crud  |  19761.31 | 7 |
-| | | |
+| Express  | ~05500  | 260 |
+| 4crud  |  ~15100 | 15 |
+| Native |  ~19000 | - |
 
 
 
@@ -125,6 +137,9 @@ npm start
   * Benchmark corrected
 * 1.0.1
   * Vulnerability corrections and production release
+* 2.0.0
+  * HTTP protocol supressed.  HTTPS implemented as the only protocol.
+  * Bugs fixed.
 
 ## Authors
 
