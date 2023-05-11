@@ -1,5 +1,12 @@
 
 const https = require('https')
+const http = require('http')
+
+// Mapeando os protocolos para seus respectivos módulos
+const protocols = {
+  'http': http,
+  'https': https
+}
 
 class Helper {
   fncStore (url, fnc, method) {
@@ -8,8 +15,9 @@ class Helper {
   }
 
   start (port, credentials) {
+    let protocol = credentials?'https':'http'
     console.log(`Starting server at port ${port}`)
-    https.createServer(credentials, (req, res) => {
+    protocols[protocol].createServer(credentials, (req, res) => {
       let body = ''
       req.on('data', chunk => {
         body += chunk

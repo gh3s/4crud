@@ -37,7 +37,7 @@ curl localhost:3000/getroute1?name=john
 curl -X POST -H "Content-Type: application/json" -d '{"name":"john","password":"abc"}' localhost:3000/postroute1
 ```
 ## Features
-* HTTPS
+* HTTPS or HTTP
 * Routing
 * Fast performance (Remember, ES6 have some intrinsic slowdowns but yes, it's fastest as express.js!)
 * Fast implementation on any type of API
@@ -47,16 +47,16 @@ curl -X POST -H "Content-Type: application/json" -d '{"name":"john","password":"
 
 ```js
 const Server = require('4crud')
-const fs = require('fs')
+const fs = require('fs') //Only for https
 
-const privateKey = fs.readFileSync([PRIVATEKEYPATH], 'utf8')
-const certificate = fs.readFileSync([CERTIFICATEPATH], 'utf8')
+const privateKey = fs.readFileSync([PRIVATEKEYPATH], 'utf8') //Only for https
+const certificate = fs.readFileSync([CERTIFICATEPATH], 'utf8') //Only for https
 
 const credentials = {
   key: privateKey,
   cert: certificate,
   passphrase: [PASS] //if exists
-}
+} //Only for https
 
 const server = new Server()
 
@@ -140,6 +140,8 @@ npm start
 * 2.0.0
   * HTTP protocol supressed.  HTTPS implemented as the only protocol.
   * Bugs fixed.
+* 2.1.0
+  * HTTPS and HTTP working together
 
 ## Authors
 
